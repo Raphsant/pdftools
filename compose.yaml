@@ -1,0 +1,12 @@
+# Dockge stack for Snuuy PDFTools
+# Replace YOUR_GITHUB_USERNAME/pdftools with the actual GitHub repo path
+# (the image name matches the repo: ghcr.io/<owner>/<repo>).
+services:
+  pdftools:
+    image: ghcr.io/YOUR_GITHUB_USERNAME/pdftools:latest
+    container_name: pdftools
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - NUXT_PUBLIC_SITE_URL=https://pdf.snuuy.com
