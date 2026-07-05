@@ -1,27 +1,42 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   multiple?: boolean
   hint?: string
-}>()
+  /** input accept attribute */
+  accept?: string
+  /** lowercase extensions used to filter dropped files */
+  extensions?: string[]
+  label?: string
+}>(), {
+  accept: 'application/pdf,.pdf',
+  extensions: () => ['.pdf'],
+  label: '',
+})
 
 const emit = defineEmits<{ files: [files: File[]] }>()
 
 const input = ref<HTMLInputElement>()
 const dragging = ref(false)
 
-function accept(list: FileList | null | undefined) {
+const fallbackLabel = computed(() =>
+  props.label || (props.multiple ? 'Drop PDFs here, or tap to browse' : 'Drop a PDF here, or tap to browse'))
+
+function accepted(list: FileList | null | undefined) {
   if (!list) return
-  const files = [...list].filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'))
+  const files = [...list].filter(f =>
+    props.extensions.some(ext => f.name.toLowerCase().endsWith(ext))
+    || (f.type && props.accept.split(',').some(a =>
+      a === f.type || (a.endsWith('/*') && f.type.startsWith(a.slice(0, -1))))))
   if (files.length) emit('files', props.multiple ? files : files.slice(0, 1))
 }
 
 function onDrop(event: DragEvent) {
   dragging.value = false
-  accept(event.dataTransfer?.files)
+  accepted(event.dataTransfer?.files)
 }
 
 function onPick(event: Event) {
-  accept((event.target as HTMLInputElement).files)
+  accepted((event.target as HTMLInputElement).files)
   ;(event.target as HTMLInputElement).value = ''
 }
 </script>
@@ -37,14 +52,12 @@ function onPick(event: Event) {
     @drop.prevent="onDrop"
   >
     <UIcon name="i-lucide-file-plus-2" class="size-8 text-dimmed" />
-    <span class="text-sm text-toned">
-      {{ multiple ? 'Drop PDFs here, or tap to browse' : 'Drop a PDF here, or tap to browse' }}
-    </span>
+    <span class="text-sm text-toned">{{ fallbackLabel }}</span>
     <span v-if="hint" class="text-xs text-muted">{{ hint }}</span>
     <input
       ref="input"
       type="file"
-      accept="application/pdf,.pdf"
+      :accept="accept"
       :multiple="multiple"
       class="hidden"
       @change="onPick"

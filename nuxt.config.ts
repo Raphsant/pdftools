@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       title: 'Snuuy - PDFTools',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Merge, split and reorder PDFs — free forever, processed on your device.' },
+        { name: 'description', content: 'Merge, split, reorder and convert images to PDF — free forever, processed on your device.' },
         { name: 'theme-color', content: '#ef4444' },
       ],
       link: [

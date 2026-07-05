@@ -12,4 +12,19 @@
   <url>
     <loc>https://pdf.snuuy.com/reorder</loc>
   </url>
+  <url>
+    <loc>https://pdf.snuuy.com/image-to-pdf</loc>
+  </url>
+  <url>
+    <loc>https://pdf.snuuy.com/jpg-to-pdf</loc>
+  </url>
+  <url>
+    <loc>https://pdf.snuuy.com/png-to-pdf</loc>
+  </url>
+  <url>
+    <loc>https://pdf.snuuy.com/heic-to-pdf</loc>
+  </url>
+  <url>
+    <loc>https://pdf.snuuy.com/webp-to-pdf</loc>
+  </url>
 </urlset>

@@ -3,15 +3,15 @@ const siteUrl = useRuntimeConfig().public.siteUrl
 
 useSeoMeta({
   title: 'Snuuy - PDFTools — free PDF tools, on your device',
-  description: 'Merge, split and reorder PDF pages for free — no sign-up, no upload. Your files are processed entirely in your browser.',
+  description: 'Merge, split, reorder and convert images to PDF for free — no sign-up, no upload. Your files are processed entirely in your browser.',
   ogTitle: 'Snuuy - PDFTools',
-  ogDescription: 'Merge, split and reorder PDFs in your browser. Free forever, nothing gets uploaded.',
+  ogDescription: 'Merge, split, reorder and convert images to PDF in your browser. Free forever, nothing gets uploaded.',
   ogType: 'website',
   ogUrl: `${siteUrl}/`,
   ogImage: `${siteUrl}/og.png`,
   twitterCard: 'summary_large_image',
   twitterTitle: 'Snuuy - PDFTools',
-  twitterDescription: 'Merge, split and reorder PDFs in your browser. Free forever, nothing gets uploaded.',
+  twitterDescription: 'Merge, split, reorder and convert images to PDF in your browser. Free forever, nothing gets uploaded.',
   twitterImage: `${siteUrl}/og.png`,
 })
 
@@ -36,6 +36,12 @@ const tools = [
     title: 'Reorder',
     description: 'Drag pages into a new order, delete the rest.',
   },
+  {
+    to: '/image-to-pdf',
+    icon: 'i-lucide-image',
+    title: 'Convert',
+    description: 'Turn JPG, PNG, HEIC and WebP images into PDFs.',
+  },
 ]
 </script>
 
@@ -50,12 +56,12 @@ const tools = [
             PDF tools that don't want your files
           </h1>
           <p class="mt-2 text-sm text-muted">
-            Merge, split and reorder PDFs entirely in your browser. Nothing is uploaded,
+            Merge, split, reorder and convert images to PDF entirely in your browser. Nothing is uploaded,
             nothing is watermarked, nothing costs money — your documents stay on your device.
           </p>
         </div>
 
-        <div class="grid gap-3 sm:grid-cols-3">
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <NuxtLink
             v-for="tool in tools"
             :key="tool.to"

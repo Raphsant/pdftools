@@ -1,8 +1,12 @@
 <template>
   <footer class="border-t border-default">
-    <div class="mx-auto flex h-12 max-w-5xl items-center justify-between gap-4 px-4 text-xs text-muted sm:px-6">
-      <p class="truncate">
+    <div class="mx-auto flex min-h-12 max-w-5xl items-center justify-between gap-4 px-4 py-2 text-xs text-muted sm:px-6">
+      <p>
         Free forever · files never leave your device ·
+        <NuxtLink to="/jpg-to-pdf" class="transition-colors hover:text-highlighted">JPG to PDF</NuxtLink> ·
+        <NuxtLink to="/png-to-pdf" class="transition-colors hover:text-highlighted">PNG</NuxtLink> ·
+        <NuxtLink to="/heic-to-pdf" class="transition-colors hover:text-highlighted">HEIC</NuxtLink> ·
+        <NuxtLink to="/webp-to-pdf" class="transition-colors hover:text-highlighted">WebP</NuxtLink> ·
         <a href="https://qr.snuuy.com" target="_blank" rel="noopener" class="transition-colors hover:text-highlighted">QRMaker</a>
       </p>
       <a
