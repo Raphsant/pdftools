@@ -46,6 +46,18 @@ const tools = [
           class="sm:hidden"
           :class="isActive(tool.to) ? 'text-primary' : ''"
         />
+        <UButton
+          :to="TIP_URL"
+          target="_blank"
+          rel="noopener"
+          icon="i-lucide-coffee"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          class="ms-1 text-muted"
+          aria-label="Tip jar"
+          title="Tip jar"
+        />
       </nav>
     </div>
   </header>
